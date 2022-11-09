@@ -10,9 +10,13 @@ public class Main {
                 "==|<]:-D";
 
 
-        Pattern pattern = Pattern.compile("\\*<]:-DOo");
-        Matcher matcher = pattern.matcher(santako);
+        Pattern p = Pattern.compile("\\*<]:-DOo");
+        Matcher m = p.matcher(santako);
 
-
+        int compte = 0;
+        while (m.find()) {
+            compte++;
+        }
+        System.out.println(compte);
     }
 }
