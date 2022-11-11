@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Main {
+public class ExpresionRegular {
     public static void main(String[] args) throws IOException {
 
         FileReader read = new FileReader("santako.txt");
