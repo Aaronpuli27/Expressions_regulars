@@ -1,22 +1,51 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
+
 
 public class Main {
-    public static void main(String[] args) {
-        String santako = "[0]-=-=*<]:-DOo##=========\n" +
-                "]-=-*<]:-DOo--*=][=>:o)*=**<]:-DOo0-!...\n" +
-                "-=-0-o<]:Oo|=--=||++=++=++=>\n" +
-                "==|<]:-D";
+    public static void main(String[] args) throws IOException {
 
+        FileReader read = new FileReader("santako.txt");
+        BufferedReader buff = new BufferedReader(read);
 
-        Pattern p = Pattern.compile("\\*<]:-DOo");
-        Matcher m = p.matcher(santako);
+        String linea = buff.readLine();
 
-        int compte = 0;
-        while (m.find()) {
-            compte++;
+        while (linea!=null){
+            Pattern p = Pattern.compile("\\*<]:-DOo");
+            Matcher m = p.matcher(linea);
+            int santa = 0;
+            while (m.find()) {
+                santa++;
+            }
+            if (santa!=0) {
+                System.out.print("Pare Noel ("+ santa +") ");
+            }
+
+            Pattern p2 = Pattern.compile(">:o\\)");
+            Matcher m2 = p2.matcher(linea);
+            int reno = 0;
+            while (m2.find()) {
+                reno++;
+            }
+            if (reno!=0) {
+                System.out.print("Ren ("+ reno +") ");
+            }
+
+            Pattern p3 = Pattern.compile("[^*]<]:-D");
+            Matcher m3 = p3.matcher(linea);
+            int follet = 0;
+            while (m3.find()) {
+                follet++;
+            }
+            if (follet!=0) {
+                System.out.print("Follet ("+ follet +") ");
+            }
+            System.out.println();
+            linea = buff.readLine();
         }
-        System.out.println(compte);
+
     }
 }
